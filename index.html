@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reco App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Aplicación de pedido editable">
+  <header class="top-bar" aria-label="Estado del viaje y tiempo">
+    <button aria-label="Abrir configuración" title="Abrir configuración" style="background:none;border:none;cursor:pointer;padding:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="10" r="2"></circle><line x1="6" y1="4" x2="6" y2="8"></line><line x1="6" y1="12" x2="6" y2="20"></line><circle cx="12" cy="16" r="2"></circle><line x1="12" y1="4" x2="12" y2="14"></line><line x1="12" y1="18" x2="12" y2="20"></line><circle cx="18" cy="7" r="2"></circle><line x1="18" y1="4" x2="18" y2="5"></line><line x1="18" y1="9" x2="18" y2="20"></line></svg>
+    </button>
+    <div class="time-distance" aria-live="polite" aria-atomic="true">
+      <span id="timeLabel" tabindex="0" role="text">3 min</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-timer" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"></circle><polyline points="12 10 12 13 14 13"></polyline><line x1="9" y1="4" x2="15" y2="4"></line></svg>
+      <span id="distanceLabel" tabindex="0" role="text">1.3 km</span>
+    </div>
+    <button aria-label="Abrir menú" title="Abrir menú" style="background:none;border:none;cursor:pointer;padding:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+    </button>
+  </header>
+
+  <section aria-label="Detalles del café y nota de la empresa" style="padding-top: 1rem;">
+    <input type="text" aria-label="Nombre del café" id="businessName" class="editable-text" value="Cielito Querido Café (Tresalia Tlatelolco)" spellcheck="false" autocomplete="off" />
+    <input type="text" aria-label="Dirección del café" id="businessAddress" class="editable-text address" value="Avenida Manuel Gonzales 95, Mexico City, Mexico City 06920" spellcheck="false" autocomplete="off" />
+    <label for="businessNote" class="editable-text note-label">Nota de la empresa</label>
+    <textarea id="businessNote" aria-label="Nota de la empresa" rows="2" class="editable-text note-text editable-input">En la plaza puerta tlatelolco</textarea>
+    <div class="section-divider" role="presentation"></div>
+  </section>
+
+  <section aria-label="Detalles del pedido a recolectar">
+    <h2 class="section-title">Recolecta 1 pedido</h2>
+    <div class="order-card" role="group" aria-label="Pedido de Alejandro S. Completo" tabindex="0">
+      <div class="order-info">
+        <input type="text" id="customerName" aria-label="Nombre del cliente" class="editable-text order-name editable-input" value="Alejandro S." spellcheck="false" autocomplete="off" />
+        <input type="text" id="orderDetails" aria-label="Detalles del pedido" class="editable-text order-details editable-input" value="0880C · 1 artículo" spellcheck="false" autocomplete="off" />
+      </div>
+      <div class="checkmark" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      </div>
+    </div>
+    <div class="section-divider" role="presentation"></div>
+  </section>
+
+  <section aria-label="Ayuda y soporte">
+    <button class="help-support" aria-label="Soporte para viajes" title="Soporte para viajes" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      Soporte para viajes
+    </button>
+  </section>
+
+  <div class="slider-container" aria-label="Desliza para abrir Google Maps">
+    <div class="slider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" aria-describedby="sliderHelp">
+      <div class="slider-handle" id="sliderHandle" aria-hidden="true">&rarr;</div>
+      <div class="slider-text" id="sliderText">Deslice para abrir Google Maps</div>
+    </div>
+    <p id="sliderHelp" class="sr-only">Arrastre el control deslizante hacia la derecha para completar la recolección y abrir Google Maps en una nueva pestaña.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
