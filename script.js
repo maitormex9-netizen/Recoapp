@@ -1,4 +1,4 @@
-(function(){
+document.addEventListener('DOMContentLoaded', function() {
   const slider = document.querySelector('.slider');
   const handle = document.getElementById('sliderHandle');
   const sliderText = document.getElementById('sliderText');
@@ -34,7 +34,13 @@
     sliderText.classList.remove('disabled');
   }
 
-  slider.addEventListener('mousedown', e => { dragging = true; sliderWidth = slider.offsetWidth; startX = e.clientX; currentX = parseInt(handle.style.left) || 4; });
+  slider.addEventListener('mousedown', e => { 
+    dragging = true; 
+    sliderWidth = slider.offsetWidth; 
+    startX = e.clientX; 
+    currentX = parseInt(handle.style.left) || 4; 
+  });
+
   document.addEventListener('mouseup', e => { 
     if (!dragging) return; 
     dragging = false; 
@@ -48,12 +54,10 @@
       resetHandle(); 
     } 
   });
-  document.addEventListener('mousemove', e => { if (!dragging) return; let deltaX = e.clientX - startX; updateHandlePosition(currentX + deltaX); });
 
-  // Registro Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(() => console.log('Service Worker registrado'))
-      .catch(err => console.error('Error SW:', err));
-  }
-})();
+  document.addEventListener('mousemove', e => { 
+    if (!dragging) return; 
+    let deltaX = e.clientX - startX; 
+    updateHandlePosition(currentX + deltaX); 
+  });
+});
